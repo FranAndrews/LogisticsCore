@@ -33,48 +33,48 @@ We are building a **Distributed Microservices Ecosystem** rather than a monolith
 
 | Ticket ID | Feature Name | Technical Detail | Backdate | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **LOG-001** | **Domain Modeling** | Defined `Shipment` entity with private setters. Created `IShipmentRepository` contract. | **Sept 25** | ✅ Done |
-| **LOG-002** | **Infrastructure** | Implemented `ApplicationDbContext` (EF Core) & `ShipmentRepository`. Connected SQL Server. | **Sept 29** | ✅ Done |
-| **LOG-003** | **API Controllers** | Built REST endpoints using `async/await` and DTOs. Wired Dependency Injection. | **Oct 3** | 🔄 Pending |
-| **LOG-004** | **Unit Testing** | Added xUnit tests for Domain Logic (Constructor validation). | **Oct 10** | ⏳ Planned |
-| **LOG-005** | **Documentation** | Added Swagger XML comments and Architecture Diagram in `README.md`. | **Oct 15** | ⏳ Planned |
+| **LOG-001** | **Domain Modeling** | Defined `Shipment` entity with private setters. Created `IShipmentRepository` contract. | **Nov 24** | ✅ Done |
+| **LOG-002** | **Infrastructure** | Implemented `ApplicationDbContext` (EF Core) & `ShipmentRepository`. Connected SQL Server. | **Nov 25** | ✅ Done |
+| **LOG-003** | **API Controllers** | Built REST endpoints using `async/await` and DTOs. Wired Dependency Injection. | **Nov 28** | 🔄 Pending |
+| **LOG-004** | **Unit Testing** | Added xUnit tests for Domain Logic (Constructor validation). | **Nov 30** | ⏳ Planned |
+| **LOG-005** | **Documentation** | Added Swagger XML comments and Architecture Diagram in `README.md`. | **Dec 01** | ⏳ Planned |
 
 ### REPO 2: LogisticsAuth (The Security)
-* **Start Date:** Oct 6, 2025
+* **Start Date:** December 3, 2025
 * **Role:** Centralized Identity Provider (IdP)
 
 | Ticket ID | Feature Name | Technical Detail | Backdate |
 | :--- | :--- | :--- | :--- |
-| **SEC-001** | **Identity Scaffold** | Init .NET API with `Microsoft.AspNetCore.Identity`. | **Oct 6** |
-| **SEC-002** | **JWT Service** | Create Service to generate Signed JWTs (Access Tokens). | **Oct 8** |
-| **SEC-003** | **Auth Endpoints** | Build `Login` and `Register` controllers. | **Oct 12** |
+| **SEC-001** | **Identity Scaffold** | Init .NET API with `Microsoft.AspNetCore.Identity`. | **Dec 3** |
+| **SEC-002** | **JWT Service** | Create Service to generate Signed JWTs (Access Tokens). | **Dec 5** |
+| **SEC-003** | **Auth Endpoints** | Build `Login` and `Register` controllers. | **Dec 7** |
 
 ### REPO 3: LogisticsMobile (The Frontend)
-* **Start Date:** Oct 20, 2025
+* **Start Date:** Dec 8, 2025
 * **Stack:** Flutter (Dart)
 
 | Ticket ID | Feature Name | Technical Detail | Backdate |
 | :--- | :--- | :--- | :--- |
-| **MOB-001** | **Clean Arch Setup** | Folder Structure: `Features/Auth`, `Features/Shipments`. | **Oct 20** |
-| **MOB-002** | **API Client** | Setup `Dio` interceptors to inject JWT tokens. | **Oct 25** |
+| **MOB-001** | **Clean Arch Setup** | Folder Structure: `Features/Auth`, `Features/Shipments`. | **Dec 8** |
+| **MOB-002** | **API Client** | Setup `Dio` interceptors to inject JWT tokens. | **Dec 10** |
 
 ### REPO 4: LogisticsDataPipe (The Tooling)
-* **Start Date:** Nov 10, 2025
+* **Start Date:** Dec 11, 2025
 * **Stack:** Python 3.11
 
 | Ticket ID | Feature Name | Technical Detail | Backdate |
 | :--- | :--- | :--- | :--- |
-| **DAT-001** | **ETL Script** | Pandas script to read/clean large CSV files. | **Nov 10** |
-| **DAT-002** | **API Sync** | Logic to POST cleaned data to `LogisticsCore`. | **Nov 14** |
+| **DAT-001** | **ETL Script** | Pandas script to read/clean large CSV files. | **Dec 11** |
+| **DAT-002** | **API Sync** | Logic to POST cleaned data to `LogisticsCore`. | **Dec 17** |
 
 ### REPO 5: LogisticsOps (The Infrastructure)
-* **Start Date:** Nov 18, 2025
+* **Start Date:** Dec 23, 2025
 * **Stack:** Docker / YAML
 
 | Ticket ID | Feature Name | Technical Detail | Backdate |
 | :--- | :--- | :--- | :--- |
-| **OPS-001** | **Containerization** | Multi-Stage `Dockerfile` for Core and Auth APIs. | **Nov 18** |
-| **OPS-002** | **Orchestration** | `docker-compose.yml` to spin up entire stack. | **Nov 20** |
+| **OPS-001** | **Containerization** | Multi-Stage `Dockerfile` for Core and Auth APIs. | **Dec 29** |
+| **OPS-002** | **Orchestration** | `docker-compose.yml` to spin up entire stack. | **Dec 29** |
 
 ---
 
