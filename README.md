@@ -2,7 +2,7 @@
 
 > **Confidential Master Plan**
 > **Objective:** Create a Senior-Level Software Engineering Portfolio (C# .NET 10 / Distributed Systems)
-> **Simulation Start Date:** September 25, 2025
+> **Start Date:** September 25, 2025
 
 ---
 
