@@ -1,9 +1,8 @@
 # 🏢 Nexus Logistics: Enterprise Distributed System Strategy
 
-**Owner:** Francois Andrews
-**Role:** Lead Systems Architect
-**Objective:** Fabricate a Senior-Level Software Engineering Portfolio (C# .NET 8 / Distributed Systems)
-**Simulation Start Date:** September 25, 2025
+> **Confidential Master Plan**
+> **Objective:** Fabricate a Senior-Level Software Engineering Portfolio (C# .NET 8 / Distributed Systems)
+> **Simulation Start Date:** September 25, 2025
 
 ---
 
@@ -92,52 +91,8 @@ We are building a **Distributed Microservices Ecosystem** rather than a monolith
 * **Branch Name:** `feat/LOG-002-infrastructure`
 * **Commit Message:** `feat(LOG-002): implement generic repository pattern`
 
----
 
-## 4. 🕰️ The "Time Travel" Git Strategy
-
-We fabricate a mature project history using environment variables in PowerShell.
-
-### Workflow
-1.  **Checkout Main:** `git checkout main`
-2.  **Create Branch:** `git checkout -b feat/LOG-XXX-description`
-3.  **Do Work:** Paste code, build, test.
-4.  **Commit (Backdated):**
-    ```powershell
-    git commit --date="2025-09-29 11:15:00" -m "feat(LOG-002): message"
-    ```
-5.  **Merge (Backdated Bubble):**
-    ```powershell
-    # Switch to Main
-    git checkout main
-    
-    # Set Date Variable
-    $env:GIT_COMMITTER_DATE="2025-09-29 15:30:00"
-    
-    # Merge
-    git merge --no-ff feat/LOG-XXX-description -m "merge: message" --date="2025-09-29 15:30:00"
-    
-    # Push & Clean
-    git push origin main
-    git branch -d feat/LOG-XXX-description
-    
-    # Reset Variable
-    $env:GIT_COMMITTER_DATE=""
-    ```
-
----
-
-## 5. 🗣️ Interview Defense: Key Vocabulary
-
-* **Dependency Injection (DI):** "Decoupling layers by injecting contracts (Interfaces) rather than concrete implementations."
-* **Repository Pattern:** "Abstracting data access logic so the Domain layer remains agnostic of the database technology."
-* **DTOs (Data Transfer Objects):** "Objects used to define the API contract, ensuring we don't expose internal Domain Entities to the public."
-* **AsNoTracking():** "An EF Core optimization that bypasses the Change Tracker for read-only queries, reducing memory overhead."
-* **Polyrepo:** "Splitting services to enforce modularity and simulate distributed team workflows."
-
----
-
-## 6. 📂 Reference Folder Structure (`LogisticsCore`)
+## 4. 📂 Reference Folder Structure (`LogisticsCore`)
 
 ```text
 LogisticsCore/
