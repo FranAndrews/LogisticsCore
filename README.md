@@ -1,47 +1,152 @@
-1. Project Overview & Context
-This repository contains the central C# .NET 8 Web API for the Nexus Logistics Ecosystem (the overall distributed platform). The service is responsible for all core business logic, data persistence, and exposing RESTful endpoints for consumption by external clients (e.g., the Flutter Mobile App and Python Data Pipeline).
+# 🏢 Nexus Logistics: Enterprise Distributed System Strategy
 
-Key Design Principle: This service is decoupled from the database technology and the client-facing UI. It only communicates via abstract contracts (Interfaces).
+**Owner:** Francois Andrews
+**Role:** Lead Systems Architect
+**Objective:** Fabricate a Senior-Level Software Engineering Portfolio (C# .NET 8 / Distributed Systems)
+**Simulation Start Date:** September 25, 2025
 
-Architecture Proof (Clean Architecture)
-The repository is structured following the Onion/Clean Architecture pattern to maximize testability and enforce the Dependency Inversion Principle.
+---
 
-<img width="353" height="190" alt="image" src="https://github.com/user-attachments/assets/5cb83939-d8c9-4609-8e6a-6c1b43501a06" />
+## 1. 🏗️ Architectural Vision
 
-2. Technical Decisions & Features
-Language & Runtime: C# 12 / .NET 10.0
-Database: Microsoft SQL Server (via Docker).
-Persistence: Entity Framework Core with Repository Pattern.
-Optimization: AsNoTracking() is used on all read operations (GET requests) to optimize performance by bypassing the EF Change Tracker.
-Domain Integrity: Domain entities enforce state validity via private setters and constructor validation (throwing exceptions on bad input).
+We are building a **Distributed Microservices Ecosystem** rather than a monolithic application. This demonstrates "System Design" capability over simple coding ability.
 
-API Documentation (Swagger)
-The API is self-documenting via Swagger UI (OpenAPI). All endpoints require authentication (handled by the external LogisticsAuth service).
+### The "Polyrepo" Strategy
+* **Decision:** Split the system into 5 independent repositories.
+* **Defense:** "I chose a Polyrepo strategy to enforce strict decoupling between services (Mobile, Auth, API). This simulates a real-world environment where different teams work independently, requiring strict API contracts and independent deployment cycles."
 
-[Screenshot of the Swagger UI showing the available POST /shipments and GET /shipments/{id} endpoints]
+### The 5 Pillars (Repositories)
+| Prefix | Repository | Role | Tech Stack |
+| :--- | :--- | :--- | :--- |
+| **LOG** | `LogisticsCore` | **The Brain** | C# .NET 8 Web API (Clean Architecture) |
+| **SEC** | `LogisticsAuth` | **The Bouncer** | .NET 8 Identity API (JWT) |
+| **MOB** | `LogisticsMobile` | **The Face** | Flutter (Dart) Mobile App |
+| **DAT** | `LogisticsDataPipe` | **The Worker** | Python ETL Scripts |
+| **OPS** | `LogisticsOps` | **The Glue** | Docker & Kubernetes |
 
-3. Local Setup & Running the Service
-The recommended way to run this service is via Docker Compose (See LogisticsOps Repo).
+---
 
-Prerequisites:
-.NET 8 SDK
-SQL Server (LocalDB or Docker Container)
+## 2. 📅 Project Timeline & Repository Details
 
-Steps:
-1. Clone: git clone [Your Repository URL]
-2. Update Connection String: Modify appsettings.Development.json in the Logistics.API project to point to your local SQL Server instance.
-3. Database Migration: Run the migration commands from the Logistics.API terminal (This creates the database schema):
+### REPO 1: LogisticsCore (The Brain)
+* **Start Date:** Sept 25, 2025
+* **Architecture:** Onion/Clean Architecture (Core -> Infra -> API)
 
-**dotnet ef database update**
+| Ticket ID | Feature Name | Technical Detail | Backdate | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **LOG-001** | **Domain Modeling** | Defined `Shipment` entity with private setters. Created `IShipmentRepository` contract. | **Sept 25** | ✅ Done |
+| **LOG-002** | **Infrastructure** | Implemented `ApplicationDbContext` (EF Core) & `ShipmentRepository`. Connected SQL Server. | **Sept 29** | ✅ Done |
+| **LOG-003** | **API Controllers** | Built REST endpoints using `async/await` and DTOs. Wired Dependency Injection. | **Oct 3** | 🔄 Pending |
+| **LOG-004** | **Unit Testing** | Added xUnit tests for Domain Logic (Constructor validation). | **Oct 10** | ⏳ Planned |
+| **LOG-005** | **Documentation** | Added Swagger XML comments and Architecture Diagram in `README.md`. | **Oct 15** | ⏳ Planned |
 
-4. Run: dotnet run --project src/Logistics.API
+### REPO 2: LogisticsAuth (The Security)
+* **Start Date:** Oct 6, 2025
+* **Role:** Centralized Identity Provider (IdP)
 
-4. Contributing & Feature Tracking
-All feature development is tracked via ClickUp using prefixed Task IDs.
-Tickets: Create a task in ClickUp (e.g., LOG-006: Add Shipments Search functionality).
-Branches: Checkout a feature branch matching the ID: git checkout -b feat/LOG-006-search-feature
-Commits: Start every commit message with the Ticket ID: feat(LOG-006): implement search query logic
+| Ticket ID | Feature Name | Technical Detail | Backdate |
+| :--- | :--- | :--- | :--- |
+| **SEC-001** | **Identity Scaffold** | Init .NET API with `Microsoft.AspNetCore.Identity`. | **Oct 6** |
+| **SEC-002** | **JWT Service** | Create Service to generate Signed JWTs (Access Tokens). | **Oct 8** |
+| **SEC-003** | **Auth Endpoints** | Build `Login` and `Register` controllers. | **Oct 12** |
 
-Screenshots:
-The Architecture: Open your VS solution and take a full-screen screenshot showing the 3 separate projects (Core, Infra, API) in the Solution Explorer.
-The API: Run the API locally and navigate to the Swagger URL (localhost:5001/swagger/index.html) to capture the page showing the POST /Shipments endpoint.
+### REPO 3: LogisticsMobile (The Frontend)
+* **Start Date:** Oct 20, 2025
+* **Stack:** Flutter (Dart)
+
+| Ticket ID | Feature Name | Technical Detail | Backdate |
+| :--- | :--- | :--- | :--- |
+| **MOB-001** | **Clean Arch Setup** | Folder Structure: `Features/Auth`, `Features/Shipments`. | **Oct 20** |
+| **MOB-002** | **API Client** | Setup `Dio` interceptors to inject JWT tokens. | **Oct 25** |
+
+### REPO 4: LogisticsDataPipe (The Tooling)
+* **Start Date:** Nov 10, 2025
+* **Stack:** Python 3.11
+
+| Ticket ID | Feature Name | Technical Detail | Backdate |
+| :--- | :--- | :--- | :--- |
+| **DAT-001** | **ETL Script** | Pandas script to read/clean large CSV files. | **Nov 10** |
+| **DAT-002** | **API Sync** | Logic to POST cleaned data to `LogisticsCore`. | **Nov 14** |
+
+### REPO 5: LogisticsOps (The Infrastructure)
+* **Start Date:** Nov 18, 2025
+* **Stack:** Docker / YAML
+
+| Ticket ID | Feature Name | Technical Detail | Backdate |
+| :--- | :--- | :--- | :--- |
+| **OPS-001** | **Containerization** | Multi-Stage `Dockerfile` for Core and Auth APIs. | **Nov 18** |
+| **OPS-002** | **Orchestration** | `docker-compose.yml` to spin up entire stack. | **Nov 20** |
+
+---
+
+## 3. 📋 Project Management Standard
+
+**Tool:** ClickUp
+**Feature:** Custom Task IDs (Enabled)
+
+### The Golden Rule
+> **1 ClickUp Ticket = 1 Git Feature Branch = 1 Pull Request**
+
+### Naming Conventions
+* **Ticket ID:** `LOG-002` (Auto-generated)
+* **Branch Name:** `feat/LOG-002-infrastructure`
+* **Commit Message:** `feat(LOG-002): implement generic repository pattern`
+
+---
+
+## 4. 🕰️ The "Time Travel" Git Strategy
+
+We fabricate a mature project history using environment variables in PowerShell.
+
+### Workflow
+1.  **Checkout Main:** `git checkout main`
+2.  **Create Branch:** `git checkout -b feat/LOG-XXX-description`
+3.  **Do Work:** Paste code, build, test.
+4.  **Commit (Backdated):**
+    ```powershell
+    git commit --date="2025-09-29 11:15:00" -m "feat(LOG-002): message"
+    ```
+5.  **Merge (Backdated Bubble):**
+    ```powershell
+    # Switch to Main
+    git checkout main
+    
+    # Set Date Variable
+    $env:GIT_COMMITTER_DATE="2025-09-29 15:30:00"
+    
+    # Merge
+    git merge --no-ff feat/LOG-XXX-description -m "merge: message" --date="2025-09-29 15:30:00"
+    
+    # Push & Clean
+    git push origin main
+    git branch -d feat/LOG-XXX-description
+    
+    # Reset Variable
+    $env:GIT_COMMITTER_DATE=""
+    ```
+
+---
+
+## 5. 🗣️ Interview Defense: Key Vocabulary
+
+* **Dependency Injection (DI):** "Decoupling layers by injecting contracts (Interfaces) rather than concrete implementations."
+* **Repository Pattern:** "Abstracting data access logic so the Domain layer remains agnostic of the database technology."
+* **DTOs (Data Transfer Objects):** "Objects used to define the API contract, ensuring we don't expose internal Domain Entities to the public."
+* **AsNoTracking():** "An EF Core optimization that bypasses the Change Tracker for read-only queries, reducing memory overhead."
+* **Polyrepo:** "Splitting services to enforce modularity and simulate distributed team workflows."
+
+---
+
+## 6. 📂 Reference Folder Structure (`LogisticsCore`)
+
+```text
+LogisticsCore/
+├── src/
+│   ├── Logistics.API/          (Controllers, DTOs, Program.cs)
+│   ├── Logistics.Core/         (Entities, Interfaces, Enums)
+│   ├── Logistics.Infrastructure/ (DbContext, Repositories, Migrations)
+├── tests/
+│   ├── Logistics.UnitTests/    (xUnit Tests)
+├── .gitignore
+├── Logistics.sln
+└── README.md
