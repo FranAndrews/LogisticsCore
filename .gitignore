@@ -472,6 +472,7 @@ $RECYCLE.BIN/
 
 # Configuration and Secrets
 appsettings.Development.json
+.env
 
 # Windows Installer files
 *.cab
@@ -485,3 +486,5 @@ appsettings.Development.json
 
 # Vim temporary swap files
 *.swp
+
+
