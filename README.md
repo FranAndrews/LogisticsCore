@@ -1,107 +1,74 @@
-# 🏢 Nexus Logistics: Enterprise Distributed System Strategy
+# 🏢 Nexus Logistics: Distributed Enterprise Ecosystem
 
-> **Confidential Master Plan**
-> **Objective:** Fabricate a Senior-Level Software Engineering Portfolio (C# .NET 8 / Distributed Systems)
-> **Simulation Start Date:** September 25, 2025
+> **Project Status:** Active Development (Sprint 1)
+> **Role:** Lead Software Engineer
+> **Current Focus:** Infrastructure Orchestration & Core API Development
 
----
+## 1. 🏗️ The Architectural Vision
+Nexus Logistics is a **Distributed Microservices Ecosystem** designed to simulate high-scale enterprise logistics. Unlike monolithic "tutorial" apps, this system enforces strict separation of concerns through a **Polyrepo Strategy**.
 
-## 1. 🏗️ Architectural Vision
+The goal is to demonstrate **Full-Cycle Engineering** capability:
+1.  **Build** the Core Logic (.NET 8 Clean Architecture).
+2.  **Orchestrate** the Infrastructure (Docker & SQL Server).
+3.  **Automate** the Assurance (Playwright E2E Tests).
+4.  **Consume** via Multiple Clients (Flutter Mobile & Blazor Web).
 
-We are building a **Distributed Microservices Ecosystem** rather than a monolithic application. This demonstrates "System Design" capability over simple coding ability.
+## 2. 🧩 The 5 Pillars (Service Mesh)
 
-### The "Polyrepo" Strategy
-* **Decision:** Split the system into 5 independent repositories.
-* **Defense:** "I chose a Polyrepo strategy to enforce strict decoupling between services (Mobile, Auth, API). This simulates a real-world environment where different teams work independently, requiring strict API contracts and independent deployment cycles."
-
-### The 5 Pillars (Repositories)
 | Prefix | Repository | Role | Tech Stack |
 | :--- | :--- | :--- | :--- |
-| **LOG** | `LogisticsCore` | **The Brain** | C# .NET 8 Web API (Clean Architecture) |
-| **SEC** | `LogisticsAuth` | **The Bouncer** | .NET 8 Identity API (JWT) |
-| **MOB** | `LogisticsMobile` | **The Face** | Flutter (Dart) Mobile App |
-| **DAT** | `LogisticsDataPipe` | **The Worker** | Python ETL Scripts |
-| **OPS** | `LogisticsOps` | **The Glue** | Docker & Kubernetes |
+| **LOG** | `LogisticsCore` | **The Brain** | .NET 8 Web API, EF Core, SQL Server |
+| **OPS** | `LogisticsOps` | **The Platform** | Docker Compose, GitHub Actions (CI/CD) |
+| **QUA** | `LogisticsQuality`| **The Guardian** | Playwright .NET, xUnit (Automated QA) |
+| **SEC** | `LogisticsAuth` | **The Bouncer** | ASP.NET Identity, JWT Provider |
+| **MOB** | `LogisticsMobile` | **The Face** | Flutter (Dart), Dio Client |
 
 ---
 
-## 2. 📅 Project Timeline & Repository Details
+## 3. 📅 Development Roadmap (Sprint 1)
 
-### REPO 1: LogisticsCore (The Brain)
-* **Start Date:** Sept 25, 2025
-* **Architecture:** Onion/Clean Architecture (Core -> Infra -> API)
-
-| Ticket ID | Feature Name | Technical Detail | Backdate | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **LOG-001** | **Domain Modeling** | Defined `Shipment` entity with private setters. Created `IShipmentRepository` contract. | **Sept 25** | ✅ Done |
-| **LOG-002** | **Infrastructure** | Implemented `ApplicationDbContext` (EF Core) & `ShipmentRepository`. Connected SQL Server. | **Sept 29** | ✅ Done |
-| **LOG-003** | **API Controllers** | Built REST endpoints using `async/await` and DTOs. Wired Dependency Injection. | **Oct 3** | 🔄 Pending |
-| **LOG-004** | **Unit Testing** | Added xUnit tests for Domain Logic (Constructor validation). | **Oct 10** | ⏳ Planned |
-| **LOG-005** | **Documentation** | Added Swagger XML comments and Architecture Diagram in `README.md`. | **Oct 15** | ⏳ Planned |
-
-### REPO 2: LogisticsAuth (The Security)
-* **Start Date:** Oct 6, 2025
-* **Role:** Centralized Identity Provider (IdP)
-
-| Ticket ID | Feature Name | Technical Detail | Backdate |
+### ✅ Completed
+| Ticket | Feature | Tech Stack | Date Completed |
 | :--- | :--- | :--- | :--- |
-| **SEC-001** | **Identity Scaffold** | Init .NET API with `Microsoft.AspNetCore.Identity`. | **Oct 6** |
-| **SEC-002** | **JWT Service** | Create Service to generate Signed JWTs (Access Tokens). | **Oct 8** |
-| **SEC-003** | **Auth Endpoints** | Build `Login` and `Register` controllers. | **Oct 12** |
+| **LOG-001** | **Domain Modeling** | C# (DDD), Enums, Interfaces | Nov 24, 2025 |
+| **LOG-002** | **Infrastructure Layer** | EF Core, DbContext, SQL Connectors | Nov 25, 2025 |
 
-### REPO 3: LogisticsMobile (The Frontend)
-* **Start Date:** Oct 20, 2025
-* **Stack:** Flutter (Dart)
-
-| Ticket ID | Feature Name | Technical Detail | Backdate |
+### 🚧 In Progress (Week of Dec 1)
+| Ticket | Feature | Objective | Scheduled |
 | :--- | :--- | :--- | :--- |
-| **MOB-001** | **Clean Arch Setup** | Folder Structure: `Features/Auth`, `Features/Shipments`. | **Oct 20** |
-| **MOB-002** | **API Client** | Setup `Dio` interceptors to inject JWT tokens. | **Oct 25** |
-
-### REPO 4: LogisticsDataPipe (The Tooling)
-* **Start Date:** Nov 10, 2025
-* **Stack:** Python 3.11
-
-| Ticket ID | Feature Name | Technical Detail | Backdate |
-| :--- | :--- | :--- | :--- |
-| **DAT-001** | **ETL Script** | Pandas script to read/clean large CSV files. | **Nov 10** |
-| **DAT-002** | **API Sync** | Logic to POST cleaned data to `LogisticsCore`. | **Nov 14** |
-
-### REPO 5: LogisticsOps (The Infrastructure)
-* **Start Date:** Nov 18, 2025
-* **Stack:** Docker / YAML
-
-| Ticket ID | Feature Name | Technical Detail | Backdate |
-| :--- | :--- | :--- | :--- |
-| **OPS-001** | **Containerization** | Multi-Stage `Dockerfile` for Core and Auth APIs. | **Nov 18** |
-| **OPS-002** | **Orchestration** | `docker-compose.yml` to spin up entire stack. | **Nov 20** |
+| **OPS-001** | **SQL Orchestration** | Create `docker-compose.yml` to spin up SQL Server container. (Foundation) | **Dec 01** |
+| **LOG-003** | **API Controllers** | Implement `ShipmentsController` (GET/POST) connected to Docker DB. | **Dec 01** |
+| **LOG-004** | **Defensive Logic** | Implement Domain Validation (e.g., "Tracking Code cannot be empty"). | **Dec 02** |
+| **OPS-002** | **Network Bridge** | Configure Docker Network for Mobile Emulator access. | **Dec 02** |
+| **QUA-001** | **Quality Rig** | Initialize Playwright E2E Suite to automate API testing. | **Dec 03** |
 
 ---
 
-## 3. 📋 Project Management Standard
+## 4. 🛠️ Tech Stack & Decisions
 
-**Tool:** ClickUp
-**Feature:** Custom Task IDs (Enabled)
+### Why Polyrepo?
+I chose a Polyrepo strategy to enforce strict decoupling. This simulates a real-world distributed team environment where API contracts must be respected, and "spaghetti code" coupling is physically impossible.
 
-### The Golden Rule
-> **1 ClickUp Ticket = 1 Git Feature Branch = 1 Pull Request**
+### Why Playwright over Python Scripts?
+Originally considering Python for data ingestion, I pivoted to **Playwright .NET** to prioritize **Automated Integration Testing**. In a modern CI/CD pipeline, the ability to automatically verify system health is more valuable than ad-hoc scripting.
 
-### Naming Conventions
-* **Ticket ID:** `LOG-002` (Auto-generated)
-* **Branch Name:** `feat/LOG-002-infrastructure`
-* **Commit Message:** `feat(LOG-002): implement generic repository pattern`
+---
 
+## 5. 🚀 Running the System (Local Dev)
+*Prerequisites: Docker Desktop, .NET 8 SDK*
 
-## 4. 📂 Reference Folder Structure (`LogisticsCore`)
+1. **Start Infrastructure:**
 
-```text
-LogisticsCore/
-├── src/
-│   ├── Logistics.API/          (Controllers, DTOs, Program.cs)
-│   ├── Logistics.Core/         (Entities, Interfaces, Enums)
-│   ├── Logistics.Infrastructure/ (DbContext, Repositories, Migrations)
-├── tests/
-│   ├── Logistics.UnitTests/    (xUnit Tests)
-├── .gitignore
-├── Logistics.sln
-└── README.md
+   ```bash
+   docker-compose up -d
+
+2. **Apply Migrations:**
+
+Bash:
+cd src/LogisticsCore
+dotnet ef database update
+
+3. **Launch API:**
+
+Bash:
+dotnet run
