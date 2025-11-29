@@ -1,3 +1,6 @@
+using Logistics.Infrastructure.Data; // Ensure this using statement exists
+using Microsoft.EntityFrameworkCore; // Ensure this using statement exists
+
 
 namespace Logistics.API
 {
@@ -8,6 +11,8 @@ namespace Logistics.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<ApplicationDbContext>(options => // <--- ADD THIS
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // <--- ADD THIS
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

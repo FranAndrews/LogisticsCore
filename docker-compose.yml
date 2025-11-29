@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # Service 1: The Database
+  nexus-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: nexus_sql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=NexusLogistics_2025!  # Must be strong or container will crash
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql/data
+    networks:
+      - nexus-network
+
+  # Future Service: We will add the API here later (OPS-003)
+
+volumes:
+  sql_data:
+
+networks:
+  nexus-network:
+    driver: bridge
